@@ -5,7 +5,7 @@
 
 > Provides a structure for creating and displaying layered application views with toolbars, buttons, menus, and actions.
 
-![preview](https://i.imgur.com/8QyjyVu.png)
+[![preview](https://i.imgur.com/8QyjyVu.png)](https://kjantzer.github.io/backbone-groundwork/)
 
 # Dependencies
 

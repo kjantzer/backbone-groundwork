@@ -28,10 +28,22 @@ let About = MenuControllerView.extend({
 				alert('You selected '+item.label)
 			}
 		}
+	},{
+		label: 'Progress Bar',
+		onClick: 'showProgress'
 	}],
 	
 	action1(){
 		alert('do something cool')
+	},
+	
+	showProgress(){
+		let i = 0
+		clearInterval(this.progressInterval)
+		this.progressInterval = setInterval(()=>{
+			this.parent('view-1').progress(100, i++, true)
+			if( i > 100 ) clearInterval(this.progressInterval)
+		}, 50)
 	}
 })
 

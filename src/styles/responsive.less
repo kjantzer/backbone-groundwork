@@ -1,0 +1,199 @@
+#app {
+
+    @media screen and (max-width:1024px){
+
+        #sidebar { width: 200px; }
+
+        #main {
+            //padding-left: 200px;
+            left: 200px;
+
+            // make sure .inner max-width hair-line goes all the way to the bottom
+            .af-inner:after {
+                left: @main-max-w + 200px - 1;
+            }
+
+            .af-inner .dashboard .top,
+            .af-inner .filter-bar {
+                //padding-right: 215px;
+                left: 200px;
+            }
+
+            ul.left-col-menu {
+                width: 150px;
+
+                > li {
+                    font-size: 1em;
+
+                    .badge.count {
+                        font-size: 10px;
+                    }
+
+                    &:after {
+                        left: 148px !important;
+                    }
+
+                    &:before {
+                        left: 149px !important;
+                    }
+                }
+
+                // the el immediately following the left col menu
+                & + * {
+                    margin-left: 150px;
+                }
+
+            }
+        }
+
+    } // max 1024
+
+
+    /*
+        Small Mobile
+    */
+    @media screen and (max-width:768px){
+
+        #sidebar {
+            width: 30px;
+            position: absolute;
+            z-index: 50;
+            transition: 120ms;
+
+            .btn.toggle-sidebar {
+                opacity: 1;
+                visibility: visible;
+                color: @dark;
+                font-size: 19px;
+                text-decoration: none !important;
+            }
+
+         .af-toolbar {
+
+                > div {
+                    visibility: hidden;
+                    opacity: 0;
+                    box-sizing: border-box;
+                    padding-left: 15px;
+                }
+            }
+
+            .nav.main {
+
+                > li {
+
+                    > a > .arrow {
+                        border: none;
+                        right: 5px !important;
+                        width: 8px;
+                        height: 8px;
+                        border-radius: 5px;
+                        background: @dark;
+                        margin-top: -4px;
+                    }
+
+                    > a > .arrow:before {
+                        display: none;
+                    }
+                }
+            }
+        }
+
+        #sidebar:not(.open) {
+
+            &:after {
+                content: '';
+                height: 100%;
+                width: 100%;
+                position: absolute;
+                top: 0;
+                left: 0;
+                box-shadow: -2px 0px 34px #999 inset;
+                border-radius: 6px 6px 0 0;
+            }
+
+            .btn.toggle-sidebar {
+                height: 100%;
+                padding-right: 7px;
+            }
+
+            .btn.toggle-sidebar:before {
+                content: '\276f';
+            }
+
+            .toolbar {
+                overflow: hidden;
+            }
+
+            .inner > div:first-child {
+                margin-left: -20px;
+            }
+
+        }
+
+        #sidebar.open {
+            width: 200px;
+            -webkit-box-shadow: 0 3px 8px #777;
+               -moz-box-shadow: 0 3px 8px #777;
+                box-shadow: 0 3px 8px #777;
+
+            .btn.toggle-sidebar:before {
+                content: '\276e';
+            }
+
+         .af-toolbar {
+                margin-right: -1px;
+
+                > div {
+                    visibility: visible;
+                    opacity: 1;
+                }
+            }
+
+        }
+
+        #main {
+            //padding-left: 30px;
+            left: 30px;
+
+            // make sure .inner max-width hair-line goes all the way to the bottom
+            .af-inner:after {
+                left: @main-max-w + 100px - 1;
+            }
+
+            .af-inner .dashboard .top,
+            .af-inner .filter-bar {
+                padding-right: 45px;
+                left: 30px;
+            }
+
+            ul.left-col-menu {
+                width: auto;
+                position: static;
+                border-bottom: solid 2px #ccc;
+                padding-top: 5;
+                border-right: none;
+
+                > li {
+                    padding: 10px 15px;
+                    //font-size: 1em;
+
+                    .badge.count {
+                        font-size: 11px;
+                    }
+
+                    // arrow
+                    &:before, &:after { display: none; }
+                }
+
+                // the el immediately following the left col menu
+                & + * {
+                    margin-left: 0px;
+                }
+
+            }
+        }
+
+    } // max 500px
+
+}

@@ -1,0 +1,28 @@
+{
+  "name": "backbone-groundwork",
+  "version": "1.0.0",
+  "description": "Provides a view structure for apps. Created by Kevin Jantzer at Blackstone Publishing",
+  "main": "Gruntfile.js",
+  "author": "Kevin Jantzer <kevin.jantzer@blackstoneaudio.com>",
+  "scripts": {
+    "start": "parcel demo/index.html --out-dir demo-build/",
+    "build": "parcel watch demo/index.html --out-dir demo-build/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kjantzer/backbone-groundwork"
+  },
+  "devDependencies": {
+    "parcel-bundler": "^1.9.5",
+    "push-dir": "^0.4.1"
+  },
+  "dependencies": {
+    "backbone": "0.9.10",
+    "backbone-dropdown": "^2.0.1",
+    "basic-buttons": "^1.2.0",
+    "jquery": "^3.3.1",
+    "kjantzer-backbone-subviews": "^0.6.1",
+    "underscore": "^1.8.3",
+    "underscore.string": "2.3.0"
+  }
+}

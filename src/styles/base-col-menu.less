@@ -1,0 +1,44 @@
+
+// DEPRECATED
+.af-inner .col-menu {
+    margin: 1em 0;
+
+    > li {
+        padding: .5em 1em;
+        position: relative;
+        cursor: pointer;
+        border-top: solid 1px transparent;
+        border-bottom: solid 1px transparent;
+
+        &:hover {
+            border-top-color: #eee;
+            border-bottom-color: #eee;
+        }
+
+        .icon-trash {
+            visibility: hidden;
+            opacity: 0;
+        }
+
+        &:hover .icon-trash {
+            visibility: visible;
+            opacity: 1;
+        }
+    }
+
+    > li.active {
+        color: #333;
+        background: @left-col-menu;
+        //pointer-events: none;
+
+        &:after {
+            .arrow-right(#fff);
+            left: -1px;
+        }
+
+        &:before {
+            .arrow-right(#ccc);
+            left: 0px;
+        }
+    }
+}

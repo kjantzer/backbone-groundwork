@@ -1,0 +1,242 @@
+.af-toolbar {
+    position: relative;
+    z-index: 20;
+    background: #ddd;
+    background: linear-gradient(to bottom, #eee, #ddd);
+    border-left: solid 1px #bbb;
+    border-bottom: solid 1px #bbb;
+    //box-shadow: #fff 0 1px 0 inset;
+    border-radius: 4px 4px 0px 0;
+    padding: 8px 10px 7px 10px;
+    transition: all 300ms;
+    height: @toolbar-h;
+    box-sizing: border-box;
+    margin-left: -1px;
+    position: relative;
+    //top: -@toolbar-h;
+    margin-bottom: -@toolbar-h;
+    //-webkit-box-shadow: 0 3px 8px -5px #777;
+    //   -moz-box-shadow: 0 3px 8px -5px #777;
+    //    box-shadow: 0 3px 8px -5px #777;
+
+    &:before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 100%;
+        width: 100%;
+        height: 1px;
+    }
+
+    > div > .btn:not(.transparent),
+    > div > .btn-group > .btn {
+        color: rgba(0,0,0,.68);
+        border-color: rgba(0,0,0,.4);
+        font-size: .9em;
+        line-height: .9em;
+    }
+    
+    > div > .btn.disabled,
+    > div > .tool-title > .btn.disabled,
+    > div > .btn-group > .btn.disabled {
+        opacity: 0;
+        display: none;
+    }
+    
+    > div > .btn:not(.right):not(.transparent),
+    > div > .btn-group:not(.right) {
+        margin-right: .25em;
+    }
+
+    > div > .btn-group {
+        border-color: rgba(0,0,0,.4);
+    }
+
+    .btn-divider {
+        margin-left: .4em;
+        margin-right: .5em !important;
+        height: 38px;
+        padding: 0;
+        margin-top: -8px;
+        width: 1px;
+        background: rgba(0,0,0,.3);
+        border-right: solid 1px rgba(238,238,238,.9);
+        display: inline-block;
+        vertical-align: text-top;
+    }
+
+    .realtime-connections {
+        font-size: .6em;
+        margin-left: .5em;
+        margin-right: .5em;
+        vertical-align: middle;
+        // padding-left: 6px;
+        // padding-right: 6px;
+        padding: 0;
+        border: solid 1px transparent;
+        background: none;
+        color: #999;
+
+        .realtime-users {
+            margin-top: -1px;
+            height: 24px;
+            vertical-align: middle;
+            
+            .user-avatar + .user-avatar,
+            span.more {
+                margin-left: -1em;
+            }
+        }
+    }
+    
+    .book-edit-sheet .realtime-connections .realtime-users {
+        height: 32px;
+    }
+
+    // .has-dropdown > .badge.realtime-connections {
+    //     vertical-align: text-top;
+    // }
+
+    // .divider {
+    // 	display: inline-block;
+    // 	background: #ccc;
+    // 	border-right: solid 1px #f1f1f1;
+    // 	width: 1px;
+    // 	height: 25px;
+    // 	margin: 0px 10px 0 10px;
+    // }
+
+    > div.no-title > h4 {
+        display: none !important;
+    }
+    
+    > div > h4 {
+        display: inline-block;
+        color: rgba(0,0,0,.68);
+        font-size: 1.1em;
+        line-height: 1.3em;
+        margin: 0 15px 0 0;
+
+        &:before {
+            margin-top: -2px;
+            margin-left: 2px;
+        }
+
+        .section-heading {
+            position: relative;
+        }
+    }
+
+    > div > p  {
+        color: #777;
+        line-height: 1.8em;
+    }
+
+    .right:not(.divider) + .right:not(.divider) {
+        margin-right: 5px;
+    }
+
+    select {
+        padding-top: 4px;
+        padding-bottom: 4px;
+        margin-top: -1px;
+        margin-bottom: -1px;
+    }
+
+    // conflicts when inside dropdown inside toolbar. if still needed, specify direct nesting
+    // .model-editor {
+    // 	margin: 0;
+    // }
+
+
+    .progressbar {
+        width: 100%;
+        height: 4px;
+        position: absolute;
+        left: 0;
+        top: 100%;
+        margin-top: -2px;
+        pointer-events: none;
+
+        .progressbar-outer,
+        .progressbar-inner {
+            width: 100%;
+            height: 100%;
+        }
+
+        .progressbar-outer {
+            //box-shadow: #555 0 0px 2px inset;
+            background: #eee;
+        }
+
+        .progressbar-inner {
+            //background: #555;
+            background: @progressbar-color;
+            width: 37%;
+        }
+
+        .progressbar-count {
+            position: absolute;
+            line-height: 2.5em;
+            font-size: 10px;
+            font-weight: bold;
+            width: 100%;
+            text-align: center;
+            top: 100%;
+            //color: #fff;
+            //text-shadow: #000 0 0 2px;
+            background: rgba(255,255,255,.9);
+        }
+    }
+
+    .no-progress-label .progressbar .progressbar-count {
+        display: none;
+    }
+
+    .large-progress .progressbar .progressbar-count {
+        font-size: 4em;
+        line-height: 8em;
+        background: transparent;
+
+        > span {
+            background: rgba(255,255,255,.8);
+            padding: 0 .25em;
+            border-radius: 4px;
+        }
+    }
+
+} // .af-toolbar
+
+
+.af-toolbar .summary {
+    display: flex;;
+
+    dl {
+        margin-left: 1em;
+        margin-top: -3px;
+
+        dt {
+            text-align: center;
+            font-size: .7em;
+            text-transform: uppercase;
+            font-weight: bold;
+            margin-bottom: 1px;
+            color: rgba(0,0,0,.4);
+        }
+
+        dd {
+            text-align: center;
+            font-size: 1.2em;
+            font-weight: 300;
+            color: rgba(0,0,0,.68);
+        }
+
+        &.red dt { color: @color-red; }
+        &.orange dt { color: @color-orange; }
+        &.green dt { color: @color-green; }
+    }
+}
+
+.af-toolbar .btn.right + .summary {
+    margin-right: .6em !important;
+}

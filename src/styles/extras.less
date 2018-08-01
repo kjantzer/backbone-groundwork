@@ -1,0 +1,60 @@
+body.auto-hide-header {
+
+    header {
+        //height: 43px;
+        transition: 200ms;
+
+        // add some padding to bottom of header so hover is triggered easier
+        &:after {
+            height: 7px;
+            width: 100%;
+            position: absolute;
+            bottom: -7px;
+            background: transparent;
+            content: '';
+        }
+    }
+
+    header:not(:hover) {
+        //height: 5px;
+        //overflow: hidden;
+        -webkit-transform: translate3d(0, -38px, 0);
+           -moz-transform: translate3d(0, -38px, 0);
+                transform: translate3d(0, -38px, 0);
+    }
+
+    #app {
+        top: 5px;
+
+        #sidebar,
+        #main,
+        #drawer,
+        #sheets {
+
+            .filter-bar {
+                top: 45px;
+            }
+        }
+
+    }
+
+    header:not(:hover) ~ #app {
+
+        #sidebar,
+        #main,
+        #drawer,
+        #sheets {
+            //top: 45px;
+            //.transition-delay(700ms);
+        }
+
+        .bd-products,
+        .bsa-production,
+        .dashboard {
+            .top {
+                top: 45px;
+            }
+        }
+    }
+
+}

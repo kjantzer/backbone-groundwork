@@ -1,0 +1,35 @@
+body.vert-menu #app {
+    top: 0px;
+    left: @vert-menu-w;
+
+    #footer {
+        -webkit-border-bottom-left-radius: 5px;
+        -moz-border-radius-bottomleft: 5px;
+        border-bottom-left-radius: 5px;
+    }
+
+    #sidebar,
+    #main,
+    #drawer,
+    #sheets .sheet {
+        top: 2px;
+    }
+
+    #sidebar .toolbar { margin-left: 0 !important; }
+
+    #sheets .sheet.fullscreen:not(.manual-width):not(.manual-height) {
+        top: 0 !important;
+        left: -@vert-menu-w !important;
+    }
+
+    .bd-products .top,
+    .bsa-production .top,
+    .dashboard .top {
+        top: 42px;
+        left: @sidebar-w + @vert-menu-w;
+    }
+
+    #main ul.left-col-menu {
+        top: 42px;
+    }
+}

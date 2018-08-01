@@ -1,0 +1,70 @@
+
+// DEPRECATED
+.af-inner .left-col-menu {
+    position: fixed;
+    z-index: 8;
+    width: 250px;
+    top: 83px;
+    bottom: 0;
+    padding-top: 15px;
+    border-right: solid 1px #ddd;
+    box-sizing: border-box;
+
+    > li {
+        position: relative;
+        padding: 15px 15px;
+        font-size: 1.3em;
+        color: #999;
+        font-weight: 300;
+        //z-index: 6; // can't remember why I had this
+
+        .badge.count {
+            font-size: 11px;
+            padding-left: 7px;
+            padding-right: 7px;
+            float: right;
+            background: #bbb;
+        }
+    }
+
+    > li.active {
+        color: #333;
+        background: @left-col-menu;
+
+        &:after {
+            .arrow-right(@left-col-menu);
+            left: 248px;
+        }
+
+        &:before {
+            .arrow-right(#ccc);
+            left: 249px;
+        }
+    }
+
+
+    > li:not(.active) {
+
+        &:hover {
+            color: #777;
+            cursor: pointer;
+        }
+
+        .badge.count {
+            background: none;
+            color: inherit;
+            text-shadow: 0;
+            font-weight: normal;
+            //border: solid 1px #ddd;
+
+            > .divider { background: #ddd;}
+        }
+    }
+
+
+    // the el immediately following the left col menu
+    & + * {
+        margin-left: 250px;
+    }
+
+}

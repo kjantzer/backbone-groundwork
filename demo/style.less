@@ -1,0 +1,199 @@
+// set some default variables
+@charset "UTF-8";
+
+@dark: #444;
+@serif: 'Times New Roman';
+@sans: 'Helvetica', 'Arial';
+
+@color-red: 'red';
+@color-orange: 'orange';
+@color-green: 'green';
+
+@red: @color-red; // dropdown var
+@green: @color-green; // dropdown var
+
+@color: #6D4C41;
+@color-highlight: #2196F3;
+
+@import url('https://fonts.googleapis.com/css?family=Roboto+Slab:300,400,700');
+
+@import 'demo-base.less'; // https://gist.github.com/kjantzer/fed29d575814024326cd
+@import 'elements.less';
+@import 'flexbox-mixins.less';
+
+// @font-dir: 'fontello/font/';
+@import '../node_modules/basic-buttons/src/style.less';
+@import '../node_modules/backbone-dropdown/src/dropdown.less';
+
+
+// @import '../lib/demo-base.less'; // https://gist.github.com/kjantzer/fed29d575814024326cd
+@import '../src/style.less';
+
+
+html, body {
+    margin: 0;
+    // overflow: hidden;
+}
+
+body {
+	// font-family: Calibri, Arial, 'Gill Sans', Arial, Verdana, sans-serif;
+	// font-size: initial;
+}
+
+#app {
+    top: 0;
+}
+
+
+#sheets {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+    z-index: -1;
+    font-family: Calibri, Arial, 'Gill Sans', Arial, Verdana, sans-serif;
+}
+
+body.sheet-open {
+    overflow: hidden;
+}
+
+body.sheet-open #sheets {
+    z-index: 10;
+}
+
+
+#root {
+    // margin: 3em auto;
+    // max-width: 900px;
+}
+
+
+//////////////////////////////////////////////////////
+
+@import "style-header.less";
+
+header, section {
+    h1, h2 {
+        font-family: 'Roboto Slab'
+    }
+}
+
+header h1, header h3 {
+    margin-left: 40px;
+    // color: #222;
+    pointer-events: none;
+}
+
+header h1 {
+    font-weight: bold;
+    // background: linear-gradient(-30deg, #2196F3, #FBC02D);
+    // -webkit-background-clip: text;
+    // -webkit-text-fill-color: transparent;
+    margin-top: 2em;
+    margin-bottom: -.25em;
+    color: #6D4C41;
+}
+
+header h3 {
+    color: #555;
+    font-weight: lighter;
+}
+
+header .preview {
+    position: absolute;
+    top: 50px;
+    z-index: -1;
+    width: 900px;
+    margin-bottom: -300px;
+    margin-top: 1em;
+    box-shadow: rgba(0,0,0,.3) 0 2px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    
+    > img {
+        width: 100%;
+    }
+    
+    &:after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 3em;
+        transition: 200ms;
+        border-radius: 4px;
+    }
+    
+    &:hover {
+        z-index: 2;
+    }
+    
+    &:hover:after {
+        content: 'Open';
+        background: rgba(0,0,0,.6);
+    }
+}
+
+header {
+    margin-bottom: 120px;
+}
+
+.f-right {
+    float: right;
+}
+
+.arrow-right(@color:#ccc, @w:10px, @h:10px){
+        content: '';
+        width: 0;
+        height: 0;
+        border-top: @h solid transparent;
+        border-bottom: @h solid transparent;
+        border-left: @w solid @color;
+        position: absolute;
+        top: 50%;
+        margin-top: -@h;
+}
+
+.arrow-left(@color:#ccc, @w:10px, @h:10px){
+        content: '';
+        width: 0;
+        height: 0;
+        border-top: @h solid transparent;
+        border-bottom: @h solid transparent;
+        border-right: @w solid @color;
+        position: absolute;
+        top: 50%;
+        margin-left: -@h;
+}
+
+.arrow-up(@color:#ccc, @w:10px, @h:10px){
+        content: '';
+        width: 0;
+        height: 0;
+        border-left: @h solid transparent;
+        border-right: @h solid transparent;
+        border-bottom: @w solid @color;
+        position: absolute;
+        left: 50%;
+        margin-top: -@h;
+}
+
+.arrow-down(@color:#ccc, @w:10px, @h:10px){
+        content: '';
+        width: 0;
+        height: 0;
+        border-left: @h solid transparent;
+        border-right: @h solid transparent;
+        border-top: @w solid @color;
+        position: absolute;
+        left: 50%;
+        margin-top: -@h;
+}

@@ -1,0 +1,351 @@
+#app  {
+
+    .af-menu-controller {
+        display: flex;;
+        height: 100%;
+        width: 100%;
+        min-height: 0;
+
+        // nested
+        .af-menu-controller {
+            height: auto;
+            //width: auto;
+        }
+
+        > .af-menu {
+            flex-shrink: 0;
+            margin: 0;
+            list-style: none;
+            padding: 0;
+
+            > div.full-width {
+                min-width: 0;
+                width: 100%;
+            }
+
+            > li {
+                position: relative;
+
+                > a {
+                    display: block;
+                    padding: .75em 1em .5em;
+                    color: rgba(0,0,0,.5);
+                    font-weight: 300;
+                    font-size: 1.1rem;
+                    border-style: solid;
+                    border-color: transparent;
+                    border-width: 0;
+
+                    &:hover {
+                        text-decoration: none;
+                        color: #777;
+                    }
+
+                    &[class^="icon-"]:before,
+                    &[class*=" icon-"]:before {
+                        margin-left: 0;
+                        margin-right: 0;
+                        margin-right: .5em;
+                        font-size: 1.2em;
+                        // line-height: .85em;
+                        vertical-align: text-bottom;
+                    }
+                }
+
+                &:not(.active) > a:hover {
+                    //background: #eee;
+                    border-color: #bbb;
+                }
+
+                &.active > a {
+                    //background: #fff;
+                    //font-weight: bold;
+                    color: #222;
+                    border-color: #222;
+                }
+
+                &.has-spinner > a {
+                    color: transparent;
+                }
+
+            } // > li
+        } // .af-menu
+
+        &.af-menu-wrap  > .af-menu {
+            flex-wrap: wrap;
+        }
+
+
+        // VERTICAL
+        &:not(.horz-menu) > .af-menu {
+            border-right: solid 1px #ddd;
+            // min-width: 140px;
+            max-height: 100%;
+            overflow-y: auto;
+
+            > li > a {
+                border-right-width: 2px;
+                margin-right: 0px;
+            }
+
+            > li > .spinner {
+                left: 2em !important;
+            }
+        }
+
+
+        // HORIZONTAL
+        &.horz-menu {
+            flex-direction: column;
+        }
+
+        &.horz-menu > .af-menu {
+            box-sizing: border-box;
+            max-width: 100%;
+            //overflow-x: auto; // then can't use dropdowns... may have to rethink this part for large menus
+            border-bottom: solid 1px #ddd;
+            width: 100%;
+            display: flex;;
+
+            > li:first-of-type { padding-left: .5em; }
+
+            > li > a {
+                border-bottom-width: 2px;
+                margin-bottom: 0px;
+            }
+        }
+
+        &.horz-menu.centered > .af-menu {
+            justify-content: center;
+        }
+
+        &.horz-menu.af-tabs > .af-menu {
+		    background: #eee;
+            border-left: solid 1px #ccc;
+            margin-left: -1px;
+		// background: linear-gradient(to bottom, #eee, #e5e5e5);
+
+            > li > a {
+                text-align: center;
+                transition: 120ms border-color;
+                
+                &[class^="icon-"]:before,
+                &[class*=" icon-"]:before {
+                    margin-right: 0;
+                }
+            }
+
+            > li > a,
+            > li:not(.active) > a:hover  {
+                padding: .6em 1em .5em;
+                margin-top: .15em;
+                border: solid 1px transparent;
+            }
+
+            > li:not(.active) > a:hover {
+                border-top-color: transparent;
+                border-left-color: transparent;
+                border-right-color: transparent;
+                
+                bottom: -1;
+                border-radius: 4px 4px 0 0;
+                border-top: solid 1px #ccc;
+                border-left: solid 1px #ccc;
+                border-right: solid 1px #ccc;
+                // border-bottom-color: #fff;
+                
+                .af-menu-label {
+                    color: #333;
+                }
+            }
+
+            > li.active > a {
+                background: #fff;
+                position: relative;
+                bottom: -1;
+                border-radius: 4px 4px 0 0;
+                border-top: solid 1px rgba(0,0,0,.15);
+                border-left: solid 1px rgba(0,0,0,.15);
+                border-right: solid 1px rgba(0,0,0,.15);
+                border-bottom-color: #fff;
+                // box-shadow: rgba(0,0,0,.2) 0 0 3px;
+                
+                // &:after {
+                //     content: '';
+                //     height: 4px;
+                //     width: 100%;
+                //     background: #fff;
+                //     position: absolute;
+                //     left: 0;
+                //     bottom: -4px;
+                // }
+            }
+            
+            a[class*="icon-"] > .af-menu-label {
+            	display: block;
+            	font-size: .7em;
+            	margin: .35em 0 -.6em;
+            	color: rgba(0,0,0,.5);
+            }
+            
+            > li.active > a .af-menu-label {
+                color: #333;
+            }
+        }
+
+// MENU VIEWS ---------------------------------------
+
+        > .af-menu-views {
+            display: flex;;
+            flex-grow: 1;
+            min-height: 0;
+            min-width: 0;
+            //overflow: auto;
+
+            > *:not(.show) {
+                display: none;
+            }
+
+            > *:not(.af-menu-controller):not(.af-menu-view-wrap):not(.no-padding) {
+                padding: 2em;
+            }
+
+            > *:not(.af-menu-controller):not(.af-menu-view-wrap) {
+                flex: 1;
+                overflow: auto;
+            }
+
+        } // .af-menu-views
+
+        &.boxes > .af-menu-views {
+            background: #eee;
+        }
+
+
+// MENU VIEW  ------------------------------------------
+
+        .af-menu-view-wrap {
+            display: flex;;
+            flex: 1;
+            flex-direction: column;
+            max-width: 100%;
+
+            > *:not(.af-menu-controller):not(.af-menu-view-actions):not(.no-padding) {
+                //margin: 1em;
+                padding: 2em;
+            }
+
+            > *:not(.af-menu-controller):not(.af-menu-view-actions) {
+                flex: 1;
+                overflow-x: hidden;
+                overflow-y: auto;
+                background: #fff;
+            }
+
+        } // .af-menu-view-wrap
+
+
+// MENU VIEW ACTIONS -----------------------------------
+
+        .af-menu-view-actions {
+            -webkit-transition: 120ms;
+            background-color: #f5f5f5;
+            padding: .75rem 1rem;
+            position: relative;
+            flex-shrink: 0;
+            //-webkit-box-shadow: #fff 0 0 20px 15px;
+            min-height: 1.5em;
+
+            > .btn, > .btn-group > .btn {
+                color: #555;
+				border-color: #aaa;
+            }
+        }
+
+        .af-menu-view-wrap.actions-left,
+        .af-menu-view-wrap.actions-right {
+            > .af-menu-view-actions {
+                padding: 1rem .75rem;
+            }
+        }
+
+        // action layouts
+        .af-menu-view-wrap {
+
+            &.actions-bottom {
+                flex-direction: column;
+
+                > .af-menu-view-actions {
+                    background: #fff;
+                    box-shadow: rgba(0,0,0,.2) 0 0 11px;
+                    // border-top: solid 1px #eee;
+                }
+            }
+
+            &.actions-top {
+                flex-direction: column-reverse;
+
+                > .af-menu-view-actions {
+                    background: #fff;
+                    box-shadow: rgba(0,0,0,.2) 0 0 11px;
+                    // border-bottom: solid 1px #eee;
+                }
+            }
+
+            &.actions-right {
+                flex-direction: row;
+
+                > .af-menu-view-actions {
+                    border-left: solid 1px #eee;
+                }
+            }
+
+            &.actions-left {
+                flex-direction: row-reverse;
+
+                > .af-menu-view-actions {
+                    border-right: solid 1px #eee;
+                }
+            }
+
+            &.actions-top > .af-menu-view-actions,
+            &.actions-bottom > .af-menu-view-actions {
+
+                > .btn:not(.right) {
+                    margin-right: .5em;
+                }
+
+                > .btn.right {
+                    margin-left: .5em;
+                }
+            }
+
+            &.actions-left > .af-menu-view-actions,
+            &.actions-right > .af-menu-view-actions {
+
+                > .btn {
+                    display: block;
+                    margin-bottom: .5em;
+                }
+            }
+        }
+
+
+            .af-menu-view-wrap.actions-bottom > { flex-direction: column; }
+            .af-menu-view-wrap.actions-top { flex-direction: column-reverse; }
+            .af-menu-view-wrap.actions-right { flex-direction: row; }
+            .af-menu-view-wrap.actions-left { flex-direction: row-reverse; }
+
+
+    } // .af-menu-controller
+
+
+
+
+    // specific styles
+    .toolbar-purewhite .af-menu-controller:not(.horz-menu) > .af-menu + * {
+        border-top: solid 1px #ddd;
+    }
+
+
+} // #app

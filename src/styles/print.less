@@ -1,0 +1,128 @@
+@media print {
+
+    html { overflow: auto; }
+
+    body {
+        background: #fff;
+    }
+
+    body * {
+        overflow: visible !important;
+        max-height: none !important;
+    }
+
+    header,
+    #footer,
+    #sidebar,
+    #sidebar .af-toolbar,
+    #drawer,
+    #drawer .af-toolbar,
+    #main .af-toolbar,
+    #sheets .sheet .af-toolbar,
+    #sheets .sheet:before { display: none !important;}
+
+    #main {
+        border-radius: 0!important;
+        border: none !important;
+    }
+
+    body.sheet-open {
+        #main {
+            display: none;
+        }
+    }
+
+    #sheets,
+    #sheets .sheet,
+    #sheets .sheet .inner {
+        position: relative !important;
+    }
+    
+    #sheets > .home {
+        display: none !important;
+    }
+
+    #sheets {
+        margin-left: 0 !important;
+        //left: -20px !important;  // HACK, as left on the .sheet was not being obeyed :(
+    }
+
+    #app #sheets .sheet {
+        left: 0 !important;
+        margin-left: 0 !important;
+        display: none;
+        box-shadow: none !important;
+
+        // only print the top sheet
+        &:last-child {
+            display: block;
+        }
+
+        .af-inner {
+            top: 0 !important;
+            height: auto; // #928
+
+            > div {
+                max-width: none !important;
+                min-height: 0 !important;
+                border-right: none !important;
+            }
+        }
+    }
+
+
+    #app, #main, #main .af-inner {
+        position: relative !important;
+        height: auto !important;
+        width: 100% !important;
+        overflow: auto !important;
+    }
+
+    #app {
+        font-size: .7em;
+        top: 0;
+        overflow: visible;
+        background: #fff;
+        box-shadow: none;
+
+        #main {
+            margin: 0;
+            position: absolute;
+            width: 100%;
+            height: auto;
+            top: 0;
+            left: 0;
+            padding: 0;
+            //font-size: .4em;
+            bottom: 0;
+
+            text-shadow: none !important;
+        }
+
+        #main .af-inner {
+            //position: absolute;
+            top: 0 !important;
+            left: 0;
+            height: auto;
+            overflow: hidden;
+        }
+
+        #main .af-inner .filter-bar { display: none; }
+
+        #main .af-inner > div {
+            border-right: 0;
+            max-width: none !important;
+        }
+
+        .btn, .btn-group,
+        .proofing-light {
+            display: none;
+        }
+
+        .label-divider {
+            border: solid 1px #ccc;
+            font-size: 2em;
+        }
+    }
+
+}

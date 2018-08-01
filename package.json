@@ -2,11 +2,14 @@
   "name": "backbone-groundwork",
   "version": "1.0.0",
   "description": "Provides a view structure for apps. Created by Kevin Jantzer at Blackstone Publishing",
-  "main": "Gruntfile.js",
+  "main": "src/App.js",
   "author": "Kevin Jantzer <kevin.jantzer@blackstoneaudio.com>",
   "scripts": {
     "start": "parcel demo/index.html --out-dir demo-build/",
-    "build": "parcel watch demo/index.html --out-dir demo-build/"
+    "build": "parcel watch demo/index.html --out-dir demo-build/",
+    "gh-pages-build": "parcel build demo/index.html --out-dir demo-build --public-url ./",
+    "gh-pages-deploy": "node node_modules/push-dir/bin/push-dir.js --dir=demo-build --branch=gh-pages --cleanup",
+    "gh-pages": "parcel build demo/index.html --out-dir demo-build --public-url ./ && node node_modules/push-dir/bin/push-dir.js --dir=demo-build --branch=gh-pages --cleanup"
   },
   "repository": {
     "type": "git",
